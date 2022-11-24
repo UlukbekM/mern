@@ -9,7 +9,7 @@ export const Header = (props) => {
         }
         // console.log(props)
     }, [props])
-//
+
     const logout = () => {
         // setLoggedIn(false)
         sessionStorage.removeItem('credential');
