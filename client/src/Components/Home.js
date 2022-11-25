@@ -79,7 +79,8 @@ export const Home = () => {
 
     const getTasks = () => {
         if(credentials.email) {
-            Axios.get(`${window.location.origin}/getByEmail`,{ 
+            // console.log(`${window.location.origin}`)
+            Axios.get(`http://localhost:3001/getByEmail`,{ 
                 params: { email: credentials.email } })
                 .then((response) => {
                 // if(response.data.length > 0) {
@@ -101,7 +102,7 @@ export const Home = () => {
         let tempDate = date.setHours(0,0,0,0)
         if(taskName !== "") {
             if(updatingItem) {
-                Axios.put(`${window.location.origin}/update`, { 
+                Axios.put(`http://localhost:3001/update`, { 
                     email: credentials.email,
                     oldTask: oldTask,
                     newTask: taskName,
@@ -113,7 +114,7 @@ export const Home = () => {
                 })
             } else {
                 if(userExists) {
-                    Axios.put(`${window.location.origin}/newTask`,{
+                    Axios.put(`http://localhost:3001/newTask`,{
                         email: credentials.email,
                         newTask: taskName,
                         newDate: tempDate
@@ -121,7 +122,7 @@ export const Home = () => {
                         getTasks()
                     })
                 } else {
-                    Axios.post(`${window.location.origin}/createUser`, {
+                    Axios.post(`http://localhost:3001/createUser`, {
                         email: credentials.email,
                         tasks: [{
                             taskname: taskName,
@@ -138,7 +139,7 @@ export const Home = () => {
     }
 
     const deleteTask = (id) => {
-        Axios.delete(`${window.location.origin}/deleteTask/${credentials.email}/${id}`,{
+        Axios.delete(`http://localhost:3001/deleteTask/${credentials.email}/${id}`,{
                         email: credentials.email,
                         id: id
                     }).then(()=> {

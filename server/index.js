@@ -10,6 +10,9 @@ app.use(cors())
 const mongoose = require("mongoose")
 mongoose.connect(`mongodb+srv://ulu:${process.env.REACT_APP_MONGODB}@cluster0.exuzikf.mongodb.net/mernproject?retryWrites=true&w=majority`)
 
+// mongoose.connect(`mongodb+srv://ulu:SgyOorRdsrllqwpT@cluster0.exuzikf.mongodb.net/mernproject?retryWrites=true&w=majority`)
+
+
 app.get("/getUsers", (req, res) => {
     UserModel.find({}, (err, result) => {
         if(err) {
@@ -100,3 +103,6 @@ app.delete("/deleteTask/:email/:id", async (req, res) => {
 app.listen(process.env.PORT || 3001, () => {
     console.log('server running')
 })
+
+
+console.log(process.env.PORT)
