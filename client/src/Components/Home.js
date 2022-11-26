@@ -27,7 +27,7 @@ export const Home = () => {
 
     const [oldTask, setOldTask] = useState("")
 
-    const api = "https://mern-delta.vercel.app/"
+    const api = "https://mern-delta.vercel.app"
 
     function tempFunction() {
         console.log(taskName);
