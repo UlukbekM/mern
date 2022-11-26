@@ -6,7 +6,8 @@ require('dotenv').config()
 const cors = require('cors')
 app.use(express.json())
 app.use(cors({
-    origin: 'https://mernfront.vercel.app/'
+    origin: 'https://mernfront.vercel.app/',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }))
 
 const mongoose = require("mongoose")
