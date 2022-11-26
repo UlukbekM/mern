@@ -6,9 +6,18 @@ require('dotenv').config()
 const cors = require('cors')
 app.use(express.json())
 app.use(cors({
-    origin: 'https://mernfront.vercel.app/',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    origin: 'https://mernfront.vercel.app',
+    // methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }))
+
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "https://yoursite.com");
+//     res.header(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+// });
 
 const mongoose = require("mongoose")
 mongoose.connect(`mongodb+srv://ulu:${process.env.REACT_APP_MONGODB}@cluster0.exuzikf.mongodb.net/mernproject?retryWrites=true&w=majority`)
