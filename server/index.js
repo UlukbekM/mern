@@ -11,6 +11,8 @@ app.use(cors(
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
     }
 ))
+app.options('*', cors())
+//https://www.npmjs.com/package/cors#enabling-cors-pre-flight
 
 // app.use((req, res, next) => {
 //     res.setHeader("Access-Control-Allow-Origin", "https://mernfront.vercel.app");
