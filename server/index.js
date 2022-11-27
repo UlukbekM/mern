@@ -5,17 +5,17 @@ require('dotenv').config()
 
 const cors = require('cors')
 app.use(express.json())
-// app.use(cors(
-//     {
-//         origin: ['mernfront.vercel.app', 'localhost:3000'],
-//         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-//     }
-// ))
+// app.use(cors())
+app.use(cors(
+    {
+        origin: ['mernfront.vercel.app', 'localhost:3000'],
+        methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    }
+))
 // app.options('*', cors())
 
 //https://www.npmjs.com/package/cors#enabling-cors-pre-flight
 
-app.use(cors())
 
 const mongoose = require("mongoose")
 mongoose.connect(`mongodb+srv://ulu:${process.env.REACT_APP_MONGODB}@cluster0.exuzikf.mongodb.net/mernproject?retryWrites=true&w=majority`)
