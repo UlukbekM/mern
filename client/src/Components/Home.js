@@ -27,7 +27,8 @@ export const Home = () => {
 
     const [oldTask, setOldTask] = useState("")
 
-    const api = "https://mern-delta.vercel.app"
+    // const api = "https://mern-delta.vercel.app"
+    const api = 'http://localhost:3001'
 
     function tempFunction() {
         console.log(taskName);
@@ -82,8 +83,9 @@ export const Home = () => {
     const getTasks = () => {
         if(credentials.email) {
             // console.log(`${window.location.origin}`)
-            Axios.get(`${api}/getByEmail`,{ 
-                params: { email: credentials.email } })
+            Axios.get(`${api}/getByEmail/${credentials.email}`
+                // ,{ params: { email: credentials.email } }
+                )
                 .then((response) => {
                 // if(response.data.length > 0) {
                 //     setUserExists(true)

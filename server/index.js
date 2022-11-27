@@ -5,23 +5,17 @@ require('dotenv').config()
 
 const cors = require('cors')
 app.use(express.json())
-app.use(cors(
-    {
-        origin: 'mernfront.vercel.app',
-        methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-    }
-))
-app.options('*', cors())
+// app.use(cors(
+//     {
+//         origin: ['mernfront.vercel.app', 'localhost:3000'],
+//         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+//     }
+// ))
+// app.options('*', cors())
+
 //https://www.npmjs.com/package/cors#enabling-cors-pre-flight
 
-// app.use((req, res, next) => {
-//     res.setHeader("Access-Control-Allow-Origin", "https://mernfront.vercel.app");
-//     res.header(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept"
-//     );
-//     next();
-// });
+app.use(cors())
 
 const mongoose = require("mongoose")
 mongoose.connect(`mongodb+srv://ulu:${process.env.REACT_APP_MONGODB}@cluster0.exuzikf.mongodb.net/mernproject?retryWrites=true&w=majority`)
@@ -39,15 +33,16 @@ app.get("/getUsers", (req, res) => {
     })
 })
 
-app.get("/getByEmail", (req, res) => {
+app.get("/getByEmail/:email", (req, res) => {
     try {
-        UserModel.find({email: req.query.email}, (err, result) => {
+        UserModel.find({email: req.params.email}, (err, result) => {
             if(err) {
                 res.json(err)
             } else {
                 res.json(result)
             }
         })
+        // console.log(req.params)
     } catch {
         res.send({error: 'email not found!'})
     }
