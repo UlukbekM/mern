@@ -227,6 +227,12 @@ h1,h4 {
   transition: 0.2s;
 }
 
+.actionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .taskText {
   overflow-wrap: break-word;
   hyphens: manual;

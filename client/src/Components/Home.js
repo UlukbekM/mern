@@ -82,20 +82,12 @@ export const Home = () => {
 
     const getTasks = () => {
         if(credentials.email) {
-            // console.log(`${window.location.origin}`)
-            Axios.get(`${api}/getByEmail/${credentials.email}`
-                // ,{ params: { email: credentials.email } }
-                )
+            Axios.get(`${api}/getByEmail/${credentials.email}`)
                 .then((response) => {
-                // if(response.data.length > 0) {
-                //     setUserExists(true)
-                // }
                 if(response.data.length !== 0) {
                     setUserExists(true)
-                    // let array = response.data[0].tasks
-                    // console.log(array)
-                    // const sortedActivities = array.sort((a, b) => b.date - a.date)
-                    // console.log(sortedActivities)
+                    response.data[0].tasks.sort((a,b) => new Date(a.date) - new Date(b.date))
+                    console.log(response.data[0].tasks)
                     setTasks(response.data[0].tasks)
                 }
             })

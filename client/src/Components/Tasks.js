@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import Axios from 'axios';
+import {  AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 export const Task = (props) => {
     const [checked, setChecked] = useState(props.completed)
 
     
     const api = process.env.REACT_APP_API_URL
+    // const api = 'http://localhost:3001'
 
     useEffect(() => {
         if(props.completed === true) {
@@ -67,8 +69,14 @@ export const Task = (props) => {
             <div className="taskText taskDate">
                 <h4>Due: {convertDate(new Date(props.date).toISOString().substring(0, 10))}</h4>
             </div>
-            <button onClick={event => props.handleClick(props.taskname,new Date(props.date),props._id)}>Edit</button>
-            <button onClick={()=>props.delete(props._id)}>Delete</button>
+            <button onClick={event => props.handleClick(props.taskname,new Date(props.date),props._id)} className="actionButton">
+                <AiFillEdit size={'1.2em'}/>
+                Edit
+            </button>
+            <button onClick={()=>props.delete(props._id)} className="actionButton">
+                <AiFillDelete size={'1.2em'}/>
+                Delete
+            </button>
         </div>
     </>)
 }
