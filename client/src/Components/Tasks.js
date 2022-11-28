@@ -2,12 +2,10 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 
 export const Task = (props) => {
-    // console.log(props)
     const [checked, setChecked] = useState(props.completed)
 
     
-    const api = "https://mern-delta.vercel.app"
-    // const api = 'http://localhost:3001'
+    const api = process.env.REACT_APP_API_URL
 
     useEffect(() => {
         if(props.completed === true) {
@@ -16,37 +14,26 @@ export const Task = (props) => {
         }
     }, [])
 
+    const months = {
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+    }
+
     const convertDate = (date) => {
         let year = date.substring(0,4)
         let tempMonth = date.substring(5,7)
         let day = date.substring(8,10)
-        let month = ''
-
-        if(tempMonth === "01") {
-            month = 'January'
-        } else if(tempMonth === "02") {
-            month = 'February'
-        } else if(tempMonth === "03") {
-            month = 'March'
-        } else if(tempMonth === "04") {
-            month = 'April'
-        } else if(tempMonth === "05") {
-            month = 'May'
-        } else if(tempMonth === "06") {
-            month = 'June'
-        } else if(tempMonth === "07") {
-            month = 'July'
-        } else if(tempMonth === "08") {
-            month = 'August'
-        } else if(tempMonth === "09") {
-            month = 'September'
-        } else if(tempMonth === "10") {
-            month = 'October'
-        } else if(tempMonth === "11") {
-            month = 'November'
-        } else if(tempMonth === "12") {
-            month = 'December'
-        }
+        let month = months[tempMonth]
 
         return month + ' ' + day + ', ' + year
     }
