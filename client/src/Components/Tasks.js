@@ -6,6 +6,8 @@ export const Task = (props) => {
     const [checked, setChecked] = useState(props.completed)
 
     
+    const api = "https://mern-delta.vercel.app"
+    // const api = 'http://localhost:3001'
 
     useEffect(() => {
         if(props.completed === true) {
@@ -51,7 +53,7 @@ export const Task = (props) => {
 
     const checkboxUpdate = () => {
         // document.getElementById(props._id).checked = true;
-        Axios.put("http://localhost:3001/updateTaskBool",{
+        Axios.put(`${api}/updateTaskBool`,{
             email: props.email,
             completed: !checked,
             id: props._id
