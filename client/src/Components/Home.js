@@ -87,7 +87,7 @@ export const Home = () => {
                 if(response.data.length !== 0) {
                     setUserExists(true)
                     response.data[0].tasks.sort((a,b) => new Date(a.date) - new Date(b.date))
-                    console.log(response.data[0].tasks)
+                    // console.log(response.data[0].tasks)
                     setTasks(response.data[0].tasks)
                 }
             })
