@@ -6,8 +6,8 @@ export const Task = (props) => {
     const [checked, setChecked] = useState(props.completed)
 
     
-    // const api = process.env.REACT_APP_API_URL
-    const api = 'http://localhost:3001'
+    const api = process.env.REACT_APP_API_URL
+    // const api = 'http://localhost:3001'
 
     useEffect(() => {
         if(props.completed === true) {
