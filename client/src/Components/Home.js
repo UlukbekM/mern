@@ -27,8 +27,8 @@ export const Home = () => {
 
     const [oldTask, setOldTask] = useState("")
 
-    const api = process.env.REACT_APP_API_URL
-    // const api = 'http://localhost:3001'
+    // const api = process.env.REACT_APP_API_URL
+    const api = 'http://localhost:3001'
 
     function tempFunction() {
         console.log(taskName);
@@ -171,7 +171,7 @@ export const Home = () => {
                     <div>
                         <DatePicker onChange={setDate} value={date} />
                     </div>
-                    <button onClick={()=>submitForm()} type="button">Submit</button>
+                        <button onClick={()=>submitForm()} type="button" className="submitButton">Submit</button>
                     </form>
                 </div>
             </Modal>
