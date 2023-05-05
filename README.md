@@ -1,7 +1,6 @@
 # [To Do List App](https://mernfront.vercel.app/)
 
-This is an e-commerce web application built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). The application features user authentication and authorization, product and category management, and a shopping cart.
-
+A full stack application utilizing the MERN (MongoDB, Express.js, React, Node.js) stack, enabling users to create, edit, and manage their personal tasks, complete with due dates and status tracking. 
 
 ## Getting Started
 
